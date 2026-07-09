@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Muhammad Ismail Khan!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* PASSWORD PAGE */
+        .password-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .iphone-container {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 50px;
+            padding: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            width: 320px;
+            aspect-ratio: 9/19;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background: #000;
+            border-radius: 0 0 25px 25px;
+            z-index: 10;
+        }
+
+        .screen {
+            flex: 1;
+            background: #000;
+            border-radius: 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px 30px;
+            overflow: hidden;
+        }
+
+        .passcode-content {
+            text-align: center;
+            width: 100%;
+        }
+
+        .time {
+            color: #fff;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .lock-icon {
+            font-size: 60px;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .passcode-label {
+            color: #999;
+            font-size: 14px;
+            margin: 20px 0 10px;
+        }
+
+        .passcode-display {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0 30px;
+        }
+
+        .dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #555;
+            border: 2px solid #777;
+            transition: all 0.2s;
+        }
+
+        .dot.filled {
+            background: #0a84ff;
+            border-color: #0a84ff;
+            box-shadow: 0 0 8px #0a84ff;
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .key-btn {
+            width: 100%;
+            aspect-ratio: 1;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 24px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            backdrop-filter: blur(10px);
+        }
+
+        .key-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(0.95);
+        }
+
+        .key-btn:active {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0.9);
+        }
+
+        .error-message {
+            color: #ff3b30;
+            font-size: 12px;
+            margin-top: 15px;
+            min-height: 16px;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* MAIN PAGE */
+        .main-page {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .main-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-frame {
+            margin: 30px 0;
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 8px solid #FFD700;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+            animation: frameGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes frameGlow {
+            0%, 100% { 
+                box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+            }
+            50% { 
+                box-shadow: 0 15px 50px rgba(255, 215, 0, 0.7);
+            }
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .birthday-name {
+            font-size: 2.5em;
+            color: #667eea;
+            margin: 20px 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .birthday-message {
+            font-size: 1.1em;
+            color: #764ba2;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .button-group {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 14px 30px;
+            font-size: 1em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-width: 200px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* CELEBRATION PAGE */
+        .celebration-page {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter-container {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 50px 40px;
+            border-radius: 20px;
+            max-width: 700px;
+            max-height: 70vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        .letter-title {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .letter-content {
+            font-size: 0.95em;
+            color: #333;
+            line-height: 1.8;
+            text-align: left;
+            min-height: 300px;
+        }
+
+        .letter-content p {
+            margin-bottom: 15px;
+        }
+
+        .flower-falling {
+            position: fixed;
+            pointer-events: none;
+            font-size: 30px;
+            animation: fall 8s linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .butterfly {
+            position: fixed;
+            pointer-events: none;
+            font-size: 25px;
+            animation: flutterFly 15s linear infinite;
+            z-index: 5;
+        }
+
+        @keyframes flutterFly {
+            0% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(100px) translateY(-30px); }
+            50% { transform: translateX(50px) translateY(-60px); }
+            75% { transform: translateX(-50px) translateY(-40px); }
+            100% { transform: translateX(0) translateY(-100px); }
+        }
+
+        .greenery {
+            position: fixed;
+            bottom: 0;
+            font-size: 40px;
+            animation: sway 3s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotateZ(-5deg); }
+            50% { transform: rotateZ(5deg); }
+        }
+
+        .celebration-button-group {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 15;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* VIDEO PAGE */
+        .video-page {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+
+        .video-title {
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .video-container {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 55vh;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            display: block;
+            background: #000;
+            object-fit: contain;
+        }
+
+        .video-controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+        }
+
+        /* GALLERY PAGE */
+        .gallery-page {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .gallery-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .gallery-title {
+            color: white;
+            font-size: 2em;
+            margin: 30px 20px 20px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .gallery-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .gallery-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .gallery-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .gallery-grid::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+        }
+
+        .gallery-grid::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .gallery-item {
+            cursor: pointer;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 5px 15px;
+            border-radius: 50%;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .modal-prev {
+            left: 20px;
+        }
+
+        .modal-next {
+            right: 20px;
+        }
+
+        .button-group-nav {
+            margin-top: 0;
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: #FFE66D;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 230, 109, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- PASSWORD PAGE -->
+    <div class="password-page" id="passwordPage">
+        <div class="iphone-container">
+            <div class="notch"></div>
+            <div class="screen">
+                <div class="passcode-content">
+                    <div class="time" id="timeDisplay">00:00</div>
+                    <div class="lock-icon">🔒</div>
+                    <div class="passcode-label">Enter Passcode</div>
+                    
+                    <div class="passcode-display" id="passcodeDisplay">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+
+                    <div class="keypad">
+                        <button class="key-btn" onclick="addDigit('1')">1</button>
+                        <button class="key-btn" onclick="addDigit('2')">2</button>
+                        <button class="key-btn" onclick="addDigit('3')">3</button>
+                        <button class="key-btn" onclick="addDigit('4')">4</button>
+                        <button class="key-btn" onclick="addDigit('5')">5</button>
+                        <button class="key-btn" onclick="addDigit('6')">6</button>
+                        <button class="key-btn" onclick="addDigit('7')">7</button>
+                        <button class="key-btn" onclick="addDigit('8')">8</button>
+                        <button class="key-btn" onclick="addDigit('9')">9</button>
+                        <button class="key-btn" style="grid-column: 2;" onclick="addDigit('0')">0</button>
+                        <button class="key-btn" onclick="deleteDigit()" style="font-size: 20px;">⌫</button>
+                    </div>
+
+                    <div class="error-message" id="errorMessage"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN PAGE -->
+    <div class="main-page" id="mainPage">
+        <div class="main-container">
+            <div class="profile-frame">
+                <img src="assets/ismail ID Pic.jpg" alt="Muhammad Ismail Khan" class="profile-image">
+            </div>
+            <div class="birthday-name">Muhammad Ismail Khan</div>
+            <div class="birthday-message">🎉 Happy 26th Birthday! 🎉</div>
+            <div class="button-group">
+                <button class="btn-primary" onclick="goToCelebration()">🎊 Celebrate! 🎊</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CELEBRATION PAGE -->
+    <div class="celebration-page" id="celebrationPage">
+        <div class="letter-container">
+            <div class="letter-title">Happy 26th Birthday, Muhammad Ismail Khan!</div>
+            <div class="letter-content" id="letterContent"></div>
+        </div>
+
+        <div class="celebration-button-group">
+            <button class="btn-secondary" onclick="goToVideos()">➡️ Next: Videos</button>
+            <button class="btn-primary" onclick="goToMain()">← Back</button>
+        </div>
+    </div>
+
+    <!-- VIDEO PAGE -->
+    <div class="video-page" id="videoPage">
+        <h1 class="video-title">🎬 Birthday Wishes Videos 🎬</h1>
+        <div class="video-container">
+            <div class="video-title">Wish #<span id="videoNumber">1</span></div>
+            <video id="videoPlayer" controls preload="metadata" crossorigin="anonymous">
+                <source id="videoSource" src="" type="video/mp4">
+                <p style="color: white; text-align: center;">Your browser does not support the video tag. Please try a different browser.</p>
+            </video>
+            <div id="videoStatus" style="color: white; text-align: center; margin-top: 10px; font-size: 14px;"></div>
+        </div>
+        <div class="video-controls">
+            <button class="btn-secondary" onclick="playNextVideo()">▶️ Next Video</button>
+            <button class="btn-secondary" onclick="goToGallery()">➡️ Photos</button>
+            <button class="btn-primary" onclick="goToMain()">← Back Home</button>
+        </div>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div class="gallery-page" id="galleryPage">
+        <div class="gallery-container">
+            <h1 class="gallery-title">📸 Photo Gallery 📸</h1>
+            <div class="gallery-grid" id="galleryGrid"></div>
+            <div class="button-group-nav">
+                <button class="btn-primary" onclick="goToMain()">← Back Home</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMAGE MODAL -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">×</button>
+            <button class="modal-nav modal-prev" onclick="prevImage()">❮</button>
+            <img id="modalImage" src="" alt="" class="modal-image">
+            <button class="modal-nav modal-next" onclick="nextImage()">❯</button>
+        </div>
+    </div>
+
+    <script>
+        const CORRECT_CODE = "2000";
+        let enteredCode = "";
+        const dots = document.querySelectorAll('.dot');
+        let currentVideoIndex = 0;
+        let currentImageIndex = 0;
+        const videos = ['assets/1st_wish.mp4', 'assets/2nd_wish.mp4'];
+        const images = ['assets/1.JPG', 'assets/2.JPG', 'assets/3.JPG', 'assets/4.JPG', 'assets/5.JPG', 'assets/6.JPG'];
+        
+        const birthdayMessage = `Today, as you turn another year older, I want the world to know just how much you truly mean to me. You are so much more than just my brother—you are my idol, the mentor who has silently guided my steps, and quite simply, my entire world. Words will never be enough to capture the depth of my love for you, but please know that it is infinite and unconditional.
+
+As I sit here, my heart is flooded with the beautiful archive of our memories—every single moment we have shared, through every situation, every joy, and every storm. From the laughter-filled days to the times we held each other up, I remember it all, vividly and with immense gratitude. Those moments with you are the most precious treasures of my life, and they have shaped me into who I am today.
+
+My deepest prayer to Allah is that He never writes a story where we are apart. May our bond remain unbreakable, and may we always live in eternal love and union, in this life and the next. You are my anchor, and I never want to know a world without you by my side.
+
+As you step into your 26th year, I raise my hands to the heavens with a special du'a for you. Ya Allah, shower my brother with every happiness this world can offer. Keep that beautiful, radiant smile forever on his face, for it is the light that brightens our entire family. Grant him immense success in all that he does, and may every single dream he holds in his heart blossom into a stunning reality. May he rise higher than he ever imagined and become the remarkable man he was always destined to be.
+
+You deserve nothing but the very best in this universe, Muhammad Ismail. Thank you for being my guide, my strength, and my greatest inspiration.
+
+Happy Birthday, my mentor, my world, my beloved brother. I love you more than you will ever know—today, tomorrow, and always.`;
+
+        // Update time display
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('timeDisplay').textContent = `${hours}:${minutes}`;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // Passcode functions
+        function addDigit(digit) {
+            if (enteredCode.length < 4) {
+                enteredCode += digit;
+                updateDots();
+                
+                if (enteredCode.length === 4) {
+                    setTimeout(() => {
+                        if (enteredCode === CORRECT_CODE) {
+                            unlockBirthday();
+                        } else {
+                            showError();
+                        }
+                    }, 500);
+                }
+            }
+        }
+
+        function deleteDigit() {
+            enteredCode = enteredCode.slice(0, -1);
+            updateDots();
+            document.getElementById('errorMessage').textContent = '';
+        }
+
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                if (index < enteredCode.length) {
+                    dot.classList.add('filled');
+                } else {
+                    dot.classList.remove('filled');
+                }
+            });
+        }
+
+        function showError() {
+            document.getElementById('errorMessage').textContent = '✗ Incorrect Passcode';
+            enteredCode = "";
+            updateDots();
+            setTimeout(() => {
+                document.getElementById('errorMessage').textContent = '';
+            }, 2000);
+        }
+
+        function unlockBirthday() {
+            document.getElementById('passwordPage').style.display = 'none';
+            document.getElementById('mainPage').style.display = 'flex';
+        }
+
+        // Page navigation functions
+        function goToMain() {
+            hideAllPages();
+            document.getElementById('mainPage').style.display = 'flex';
+        }
+
+        function goToCelebration() {
+            hideAllPages();
+            document.getElementById('celebrationPage').style.display = 'flex';
+            startTypingAnimation();
+            createFloatingElements();
+        }
+
+        function goToVideos() {
+            hideAllPages();
+            currentVideoIndex = 0;
+            document.getElementById('videoPage').style.display = 'flex';
+            updateVideoPlayer();
+        }
+
+        function goToGallery() {
+            hideAllPages();
+            document.getElementById('galleryPage').style.display = 'flex';
+            loadGallery();
+        }
+
+        function hideAllPages() {
+            document.getElementById('mainPage').style.display = 'none';
+            document.getElementById('celebrationPage').style.display = 'none';
+            document.getElementById('videoPage').style.display = 'none';
+            document.getElementById('galleryPage').style.display = 'none';
+        }
+
+        // Typing animation
+        function startTypingAnimation() {
+            const letterContent = document.getElementById('letterContent');
+            letterContent.innerHTML = '';
+            let index = 0;
+            
+            function typeWriter() {
+                if (index < birthdayMessage.length) {
+                    letterContent.textContent += birthdayMessage.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 20);
+                }
+            }
+            typeWriter();
+        }
+
+        // Floating elements (flowers, butterflies, greenery)
+        function createFloatingElements() {
+            // Create flowers
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => createFlower(), i * 300);
+            }
+            
+            // Create butterflies
+            for (let i = 0; i < 4; i++) {
+                createButterfly();
+            }
+            
+            // Create greenery at bottom
+            createGreenery();
+        }
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower-falling');
+            flower.textContent = '🌸';
+            flower.style.left = Math.random() * 100 + '%';
+            flower.style.top = '-30px';
+            document.body.appendChild(flower);
+            
+            setTimeout(() => flower.remove(), 8000);
+        }
+
+        function createButterfly() {
+            const butterfly = document.createElement('div');
+            butterfly.classList.add('butterfly');
+            butterfly.textContent = '🦋';
+            butterfly.style.left = Math.random() * 100 + '%';
+            butterfly.style.top = Math.random() * 50 + '%';
+            butterfly.style.animationDelay = Math.random() * 5 + 's';
+            butterfly.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            document.body.appendChild(butterfly);
+            
+            setTimeout(() => butterfly.remove(), 20000);
+        }
+
+        function createGreenery() {
+            const greenery = document.createElement('div');
+            greenery.classList.add('greenery');
+            greenery.textContent = '🌿';
+            greenery.style.left = Math.random() * 20 + '%';
+            greenery.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(greenery);
+        }
+
+        // Video functions
+        function updateVideoPlayer() {
+            const video = document.getElementById('videoPlayer');
+            const videoSource = document.getElementById('videoSource');
+            const videoStatus = document.getElementById('videoStatus');
+            
+            document.getElementById('videoNumber').textContent = currentVideoIndex + 1;
+            
+            videoSource.src = videos[currentVideoIndex];
+            
+            // Reset video
+            video.pause();
+            video.load();
+            
+            // Show loading status
+            videoStatus.textContent = 'Loading video...';
+            
+            // Try to play when video is ready
+            video.oncanplay = function() {
+                videoStatus.textContent = '';
+                video.play().catch(error => {
+                    videoStatus.textContent = '⚠️ Click play to start video';
+                    console.log('Autoplay prevented:', error);
+                });
+            };
+            
+            video.onerror = function() {
+                videoStatus.textContent = '⚠️ Unable to load video. Check file location: ' + videos[currentVideoIndex];
+                console.error('Video error:', video.error);
+            };
+        }
+
+        function playNextVideo() {
+            if (currentVideoIndex < videos.length - 1) {
+                currentVideoIndex++;
+                updateVideoPlayer();
+            } else {
+                alert('All videos played! Now check the photos.');
+                goToGallery();
+            }
+        }
+
+        // Gallery functions
+        function loadGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = '';
+            
+            images.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.classList.add('gallery-item');
+                item.onclick = () => openModal(index);
+                
+                const imgElement = document.createElement('img');
+                imgElement.src = img;
+                imgElement.onerror = () => {
+                    imgElement.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22250%22 height=%22250%22%3E%3Crect fill=%22%23ddd%22 width=%22250%22 height=%22250%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2216%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22%3EPhoto not found%3C/text%3E%3C/svg%3E';
+                };
+                
+                item.appendChild(imgElement);
+                galleryGrid.appendChild(item);
+            });
+        }
+
+        function openModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = images[index];
+            modalImage.onerror = () => {
+                modalImage.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect fill=%22%236366f1%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22%3EPhoto not found%3C/text%3E%3C/svg%3E';
+            };
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+
+        function nextImage() {
+            if (currentImageIndex < images.length - 1) {
+                currentImageIndex++;
+                document.getElementById('modalImage').src = images[currentImageIndex];
+            }
+        }
+
+        function prevImage() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                document.getElementById('modalImage').src = images[currentImageIndex];
+            }
+        }
+
+        // Keyboard navigation for modal
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('imageModal').classList.contains('active')) {
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+                if (e.key === 'Escape') closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
